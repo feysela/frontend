@@ -3,45 +3,42 @@
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import { setAuthHeader } from "../serverRequest";
-import { AuthData } from "../App";
-import { getAuthToken, requestServer} from "../serverRequest";
+import { requestServer } from "../serverRequest";
+import {  useContext } from "react";
+import {UserContext} from "../context/UserContext";
+
+
 
 export default function Login() {
-  const {updateUser } = AuthData();
+   const {setUserData} =useContext(UserContext);
   const navigate = useNavigate();
   const { register,
     handleSubmit,
     formState: { errors, isSubmitting }
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formValues) => {
+    console.log("Login clicked");
     const submission = {
-      userName: data.login,
-      password: data.password
+      userName: formValues.login,
+      password: formValues.password
     }
-   // requestServer("POST","/public/authenticate",submission)
-    let headers = {};
-    if (getAuthToken() !== null && getAuthToken() !== "null") {
-      headers = { 'Authorization': `Bearer ${getAuthToken()}` };
-    }
-    const loginInfo = JSON.stringify(submission);
-    fetch('http://localhost:8080/public/authenticate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: loginInfo
-    })
-    requestServer('POST','/public/authenticate', submission)
-    .then(data => {
-        setAuthHeader(data.token);
-        console.log(data);
-        updateUser({ name: data.firstName, isAuthenticated: true })
-        if (data.token && data.roles[0].name === "INSTRUCTOR")//and the role 
-          navigate("/instructordashboard");
 
-        if (data.token && data.roles[0].name === "USER")//and the role   
-          navigate("/userdashboard");
+    requestServer('POST', '/public/authenticate', submission)
+      .then(response => {
+        setAuthHeader(response.token);
+        console.log(response);
+
+        if(response.token)
+            setUserData(response);
+           
+
+        if (response.token && response.roles[0].name === "INSTRUCTOR")//and the role
+   
+          navigate("/instructordashboard",{ replace: true });
+
+        if (response.token && response.roles[0].name === "USER")//and the role   
+          navigate("/userdashboard", { replace: true });
       }).catch(
         (error) => {
           setAuthHeader(null);
@@ -51,10 +48,9 @@ export default function Login() {
   }
 
   return (
-    <div className="contact">
-
+    <div className="login">
       <h3>Login to Access Your Courses</h3>
-      <form  onSubmit={handleSubmit(onSubmit)} className="default-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="default-form">
         <label>
           <span>Username</span>
           {errors.login && (<p className="text-red-500">{`${errors.login.message}`}</p>)}
@@ -64,7 +60,6 @@ export default function Login() {
             )}
             type="text"
             placeholder="Login"
-           
           />
         </label>
         <label>
@@ -84,22 +79,10 @@ export default function Login() {
             placeholder="Password"
           ></input>
         </label>
-        <button className="btn-login"
-          disabled={isSubmitting} >Login</button>
+        <button disabled={isSubmitting} >Login</button>
       </form>
+
     </div>
   )
 
 }
-  // let headers = {};
-    // if (getAuthToken() !== null && getAuthToken() !== "null") {
-    //   headers = { 'Authorization': `Bearer ${getAuthToken()}` };
-    // }
-    // const loginInfo = JSON.stringify(submission);
-    // fetch('http://localhost:8080/public/authenticate', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: loginInfo
-    // })

@@ -1,0 +1,22 @@
+.playlist{
+    width: 40%; 
+    border-color: black;
+    border-radius: 10px;
+    border-width: 1 1 1 1;
+    background-color: blueviolet;
+    overflow-y:auto;
+    
+}
+.container{
+    display: flex; 
+}
+.playlist-item{
+    width: 400px;
+    height:100px;
+    background-color: rgb(228, 221, 235);
+    border-color: rgb(61, 15, 15);
+    border-style: solid;
+    border-radius: 2rem;
+    height: 25%;
+   
+}

@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+*{
+
+   --radius:  0.2rem;
+  }
+
+.card {
+  overflow: hidden;
+  box-shadow: 0 2px 20px grey;
+  border-radius: --radius;
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+}
+.card-image {
+    height: 12rem;
+    width: 100%;
+    object-fit: cover;
+  }
+.course-info{
+    text-align: center;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+ .btn-view, .btn-edit, .btn-delete{
+    padding: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 1rem;
+    border: 2px solid black;
+    background: transparent;
+    color: #99d9b1;
+    border-radius: --radius;
+    transition:  200ms ease-in, color 200ms ease-in;
+}
+.btn-view:hover, .btn-edit:hover, .btn-delete:hover{
+    background: --primary;
+    color: black;
+}
+.card:hover {
+    transform: scale(1.02);
+  }
+  
+

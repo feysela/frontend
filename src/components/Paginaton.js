@@ -1,4 +1,5 @@
 import React from 'react';
+import {AiOutlineVerticalLeft, AiOutlineVerticalRight} from "react-icons/ai"
 
 const Pagination = ({ coursesPerPage, totalCourses, paginate, currentPage }) => {
   const pageNumbers = [];
@@ -37,12 +38,12 @@ const Pagination = ({ coursesPerPage, totalCourses, paginate, currentPage }) => 
         onClick={() => { 
           currentPage=1;
           paginate(currentPage); }}  href='!#'>
-          {"|<"}
+         <AiOutlineVerticalRight/>
         </button>
         </li>
         <li className='page-item'>
         <button className="pagination-element" 
-        onClick={() => { if (currentPage !== 0) 
+        onClick={() => { if (currentPage !== 1) 
         {currentPage--;
         paginate(currentPage); }}} href='!#'>
           {"<"}
@@ -65,7 +66,7 @@ const Pagination = ({ coursesPerPage, totalCourses, paginate, currentPage }) => 
         <button className="pagination-element" 
         onClick={() => {currentPage=Math.ceil(totalCourses/coursesPerPage);
                         paginate(currentPage) }} href='!#'>
-          {">|"}
+         <AiOutlineVerticalLeft/>
         </button>
         </li>
       </ul>

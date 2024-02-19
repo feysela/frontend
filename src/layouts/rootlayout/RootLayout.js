@@ -1,11 +1,11 @@
 "use client";
 import { NavLink, Outlet } from "react-router-dom";
 
-import BreadCrumbs from "../components/Breadcrumbs";
+import BreadCrumbs from "../../components/Breadcrumbs";
 import { useState } from "react";
-import { rootNav } from "./rootNav";
-import { AuthData } from "../App";
-
+import { rootNav } from "../rootNav";
+import { AuthData } from "../../App";
+import logo from "../../images/quraan-logo.png"
 export default function RootLayout() {
 
   const user = AuthData();
@@ -24,7 +24,7 @@ export default function RootLayout() {
     <div className='root-layout'>
       <header>
         <nav>
-          <NavLink className="nav-element" to="/">Qlogo</NavLink>
+          <NavLink className="nav-element" to="/">Logo</NavLink> 
           <input className="nav-element searchBar" type="text" placeholder="Search for courses" name="search"  onChange={handleChange} />
 
           {rootNav.map((r, i) => {

@@ -1,21 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
-  --primary: #bc4123;
+  --primary:rgb(135, 196, 135);
   /* --secondary: #2b3452; */
-  --secondary: rgb(168, 186, 168);
+  /* --secondary: rgb(238, 244, 238); */
+  --secondary: white;
 }
 body {
-  margin: 0;
-  margin: 0;
+ 
+  margin: 1rem;
   font-family: "Poppins";
-  /* background: var(--secondary); */
+  background: var(--secondary); 
 
 }
 * {
-  color: #fff;
+ 
   margin: 0;
 }
+
 p {
   margin: 20px 0;
 }
@@ -27,31 +29,32 @@ button {
   background: var(--primary);
   cursor:pointer;
   display: block;
+
 }
-.btn-login:disabled {
+/* .btn-login:disabled {
   border: 0;
   padding: 8px;
   border-radius: 4px;
   color: rgb(30, 28, 28);
   background-color: grey;
   cursor:not-allowed;
-}
+} */
 /* navbar */
 header nav {
   display: flex;
   align-items: center;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 0; 
-  background-color: rgb(119, 119, 141);
-  color: black;
+  /* background-color: rgb(242, 242, 249); */
+  background-color:white;
   border-radius: 0.5rem;
   padding: 1rem 0rem;
-  background-color:rgb(198, 218, 168);
   color: black;
 }
 input{
   border-radius: 0.5rem;
+  border: 1px solid black;
  
 }
 /* nav label, nav a {
@@ -82,13 +85,17 @@ header nav a{
 
 }
 header nav a.active {
-  background: var(--primary);
+  /* background: var(--secondary); */
+  background: white;
   height: 0%;
 }
 
 
 /* page content */
 main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
   /* max-width: 1200px;
   margin: 40px auto; */
@@ -113,18 +120,7 @@ main {
   background: var(--primary);
 }
 /*Home Page*/
-#slider{
-  margin:0 auto;
-  width: 80%;
-  max-width: 100%;
-  text-align: center;
-}
-#slider input[type="radio"]{
-  display: none;
-}
-#slider label{
-  cursor:pointer;
-}
+
 
 /* faq */
 .faq .question {
@@ -133,12 +129,23 @@ main {
   border-radius: 4px;
   margin: 20px 0;
 }
+.register, .login{
+  display: flex;
+  flex-direction: column;
+}
+
 /* contact form */
 form {
   margin-top: 30px;
 }
-form input, form label span, form textarea, form select {
+form input, form label span, form textarea, form select, form button {
   display: block;
+  
+  
+}
+form label input, form label select{
+  color: black;
+  border: 1px black solid;
 }
 form input, form textarea, form select {
   margin-bottom: 30px;
@@ -146,7 +153,7 @@ form input, form textarea, form select {
   border-radius: 4px;
   border: 0;
   width: 300px;
-  color: var(--secondary);
+  /* color: var(--secondary); */
 }
 form select {
   margin-bottom: 30px;
@@ -156,7 +163,7 @@ form select {
   width: 316px;
   color: var(--secondary);
 }
-form select option{
+form select option, form select{
   color:black;
   width: 300px;
 }
@@ -209,7 +216,7 @@ form label span {
   display: none;
 }
 .breadcrumbs .crumb a {
-  color: #ddd;
+  color: var(--primary);
 }
 
 .text-red-500{

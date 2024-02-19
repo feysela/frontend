@@ -42,7 +42,7 @@ export const requestServer=  async (method, url, data)  => {
           };
           try{
             const res= await fetch(baseURL.concat(url), requestOptions);
-            console.log(res.ok);
+           // console.log(res.ok);
             const responseFromServer= await res.json();
             return responseFromServer;
           }catch (err){

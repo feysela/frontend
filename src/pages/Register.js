@@ -8,7 +8,7 @@ import { AuthData } from '../App'
 
 export default function Register() {
   //Take param error=? if error is available show error
-  const {updateUser } = AuthData();
+  // const {updateUser } = AuthData();
   const navigate = useNavigate();
   const { register,
     handleSubmit,
@@ -41,7 +41,7 @@ export default function Register() {
           console.log("What is received");
           console.log(response);
           setAuthHeader(response.token);
-          updateUser({ name: data.firstName, isAuthenticated: true });
+          // updateUser({ name: data.firstName, isAuthenticated: true });
           navigate("/login");
  }).catch((error)=>{
   console.log(error);
@@ -50,7 +50,7 @@ export default function Register() {
  });
   }
   return (
-    <div className="contact">
+    <div className="register">
       <h3>Register to Start Learning Today</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
@@ -189,11 +189,10 @@ export default function Register() {
             type="text"
             placeholder="Answer to question 2"
           ></input>
-        </label>
-
-        <button disabled={isSubmitting}>Register</button>
+        </label>       
+     
+      <button disabled={isSubmitting}>Register</button>
       </form>
-
     </div>
   )
 

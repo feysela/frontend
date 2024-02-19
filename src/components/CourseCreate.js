@@ -1,48 +1,41 @@
 import { Outlet } from "react-router-dom"
-import { AuthData } from "../App";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { requestServer,getAuthToken, getRequestServer } from "../serverRequest";
+import { requestServer } from "../serverRequest";
 
-import CourseList from "../components/CourseList";
-import { useState } from "react";
-import { useEffect } from "react";
-function CourseCreate({ onCreate }) {
-  const [title, setTitle] = useState('');
-  const navigate=useNavigate();
-  const { user,setUser, updateUser } = AuthData();
-  const [courseList, SetCourseList]=useState([]);
 
+function CourseCreate() {
+
+  const navigate = useNavigate();
   const { register,
     handleSubmit,
     formState: { errors, isSubmitting }
   } = useForm();
-   
+
   const onSubmit = async (data) => {
     const submission = {
-      courseName:  data.courseName,
+      courseName: data.courseName,
       description: data.description,
-      imageUrl:    data.imageUrl,
+      imageUrl: data.imageUrl,
     }
- 
-  //debugger 
-  requestServer("POST", "/private/createCourse", submission).then(response=>{
-          console.log("What is sent");
-          console.log(submission);
-          console.log("What is received");
-          console.log(response);
-          navigate("/instructordashboard");
-          //alert("Course saved");
- }).catch((error)=>{
-  console.log(error);
-  navigate("/createCourse");
- });
+
+    requestServer("POST", "/private/createCourse", submission).then(response => {
+      console.log("What is sent");
+      console.log(submission);
+      console.log("What is received");
+      console.log(response);
+      navigate("/instructordashboard");
+    }).catch((error) => {
+      console.log(error);
+     // navigate("/createCourse");
+    });
   }
 
   return (
-    
-<div className="contact">
-        <h1>Add or edit course</h1>
+
+    <div className="contact">
+      <h1>Create Course</h1>
+      <p>Enter the course details</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <span>Course Name</span>
@@ -72,7 +65,6 @@ function CourseCreate({ onCreate }) {
                   value: 2,
                   message: "Last Name must be at least 2 characters"
                 }
-                //
               }
             )}
             type="text"
@@ -98,10 +90,10 @@ function CourseCreate({ onCreate }) {
         </label>
         <button disabled={isSubmitting}>Submit</button>
       </form>
-      <Outlet/>
+      <Outlet />
     </div>
 
-      
+
   );
 }
 
