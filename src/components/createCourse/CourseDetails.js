@@ -2,60 +2,51 @@ import useFormContext from "./useFormContext";
 import "./form.css";
 
 
-const CourseDetails = () => {
-
-    const { data, handleChange } = useFormContext()
+const CourseDetails = ({register}) => {
 
     const content = (
         <>
-       
-
-            {/* <div className="split-container"> */}
-                <div className="flex-col">
+                {/* <div className="flex-col">
                     <label htmlFor="numberOfChapter">Number of Chapters</label>
                     <input
+                            {...register("numberOfChapter",
+                            {
+                              required: "Number of chapters is required",
+                            }
+                          )}
                         type="text"
                         id="numberOfChapter"
                         name="numberOfChapter"
-                        placeholder="Jane"
-                        value={data.numberOfChapter}
-                        onChange={handleChange}
-                        // disabled={data.sameAsBilling}
+                        placeholder="1"
+                     
                     />
-                </div>
-                <div className="flex-col">
+                </div> */}
+                {/* <div className="flex-col">
                     <label htmlFor="numberOfLectures">Number of Videos</label>
                     <input
+                              {...register("numberOfLectures",
+                              {
+                                required: "Number of lectures is required",
+                              }
+                            )}
                         type="text"
                         id="numberOfLectures"
                         name="numberOfLectures"
-                        placeholder="Doe"
-                        value={data.numberOfLectures}
-                        onChange={handleChange}
-                        // disabled={data.sameAsBilling}
+                        placeholder="1"
                     />
-                </div>
-            {/* </div> */}
-
-            {/* <label htmlFor="mainTopics">Main Topics</label>
-            <input
-                type="text"
-                id="mainTopics"
-                name="mainTopics"
-                value={data.mainTopics}
-                onChange={handleChange}
-                // disabled={data.sameAsBilling}
-            /> */}
+                </div> */}
 
             <label htmlFor="price">Price</label>
             <input
+            {...register("price",
+            {
+              required: "Price is required",
+            }
+          )}
                 type="text"
                 id="price"
                 name="price"
                 placeholder="0"
-                value={data.price}
-                onChange={handleChange}
-                // disabled={data.sameAsBilling}
             />
 
            

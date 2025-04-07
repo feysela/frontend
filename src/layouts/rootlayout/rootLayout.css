@@ -1,3 +1,19 @@
-.logo-image, .nav-element{
+/* .logo-image, .nav-element{
   display: inline;
+}
+.nav-bar {
+  display: flex;
+  justify-content: flex-start;
+} */
+.root-layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 100%;
+    padding: 1rem 0rem;
+
+}
+.appbar{
+  
 }

@@ -2,36 +2,46 @@
 import "./courseShow.css";
 import courseImage from "../../images/Image3.jpg"
 import { useNavigate } from 'react-router-dom';
-function CourseShow({ Course,setOpenModal, selectCourse}) {
-  const navigate =useNavigate();
+import { Paper } from '@mui/material';
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+function CourseShow({ Course, setOpenModal, selectCourse }) {
+  const navigate = useNavigate();
+
   const handleDeleteClick = () => {
-    selectCourse(Course.id);
+    selectCourse(Course.courseId);
     setOpenModal(true);
-  
+
+
   };
 
   const handleEditClick = () => {
-    navigate(`/editCourse/${Course.id}`);
+    // navigate(`/CourseEdit`);
+    navigate(`/CourseEdit/${Course.courseId}`);
 
   };
 
-  let content = <div className='course-info'>
-    <h2 className='card-title'>{Course.courseName}</h2>
-    <p className='card-description'>{Course.courseDescription}</p>
-  </div>;
+  // let content = <div className='course-info'>
+  //   <Typography variant="h6" className='card-title'>{Course.courseName}</Typography>
+  //   <Typography variant="subtitle1" className='card-description'>{Course.courseDescription}</Typography>
+  // </div>;
 
   return (
-    <div className="card">
-      <div className='card-body'>
-        <img className="card-image" src={courseImage} alt="course"></img>
-        {content}
+    // <div className="card">
+    //   <div className='card-body'>
+    <Paper style={{ width: 480, height: "auto" }}>
+      <img className="card-image" src={courseImage} alt="course"></img>
+      <Typography variant="h6" className='card-title'>{Course.courseName}</Typography>
+      <Typography variant="subtitle1" className='card-description'>{Course.courseDescription}</Typography>
+      <div className="actions">
+        <Button variant="outlined"  size="medium" className='btn-view' onClick={() => { navigate(`/coursePreview/${Course?.courseId}`) }}>View Course</Button>
+        <Button  variant="outlined"  size="medium" className="btn-edit" onClick={handleEditClick}>Edit</Button>
+        <Button variant="outlined"  size="medium" className="btn-delete" onClick={handleDeleteClick}>Delete</Button>
       </div>
-      <div className='btns'>
-        <button className='btn-view'>View Course</button>
-        <button className="btn-edit" onClick={handleEditClick}>Edit</button>
-        <button className="btn-delete" onClick={handleDeleteClick}>Delete</button>
-      </div>
-    </div>
+
+    </Paper>
+
+
   );
 }
 

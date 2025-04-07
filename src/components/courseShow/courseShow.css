@@ -15,16 +15,24 @@
   justify-content: space-between;
   cursor: pointer;
   transition: transform 200ms ease-in;
+  max-width: 500px;
 }
 .card-image {
     height: 12rem;
     width: 100%;
     object-fit: cover;
   }
+
 .course-info{
     text-align: center;
     padding: 0 1rem;
-    margin: 0;
+    margin: 0 1rem;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  max-height: 40px;
 }
 
 .btns{

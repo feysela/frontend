@@ -1,6 +1,8 @@
 
 import "./modal.css";
+import { useNavigate } from 'react-router-dom';
 function Modal({ setOpenModal, modalHeader, modalText, action }) {
+  const navigate =useNavigate();
   return (
     <div className="modalBackground">
       <div className="modalContainer">

@@ -1,58 +1,95 @@
 import useFormContext from "./useFormContext"
 import "./form.css";
-const BasicCourseInformation = () => {
 
-    const { data, handleChange } = useFormContext()
 
-    const content = (
-        <div className="flex-col">
-          
-                <div className="flex-col">
-                    <label htmlFor="courseName">Course Name</label>
-                    <input
-                        type="text"
-                        id="courseName"
-                        name="courseName"
-                        placeholder="Hadith"
-                        value={data.courseName}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex-col">
-                    <label htmlFor="courseDescription">Course Description</label>
-                    <input
-                        type="text"
-                        id="courseDescription"
-                        name="courseDescription"
-                        placeholder="This course teaches about...."
-                        value={data.courseDescription}
-                        onChange={handleChange}
-                    />
-                </div>
-    
+const BasicCourseInformation = ({register,fields, remove, append}) => {
 
-            <label htmlFor="imageUrl">Preview Url</label>
-            <input
+  // const { register, fields, append, remove } = useFormContext();
+
+
+
+  const content = (
+    <div className="flex-col">
+      <div className="flex-col">
+        <label htmlFor="courseName">Course Name</label>
+        <input
+          {...register("courseName",
+            {
+              required: "Course name is required",
+            }
+          )}
+          type="text"
+          id="courseName"
+          name="courseName"
+          placeholder="Hadith"
+        />
+      </div>
+      <div className="flex-col">
+        <label htmlFor="courseDescription">Course Description</label>
+        <textarea
+          {...register("courseDescription",
+            {
+              required: "Course description is required",
+            }
+          )}
+          type="text"
+          id="courseDescription"
+          name="courseDescription"
+          placeholder="This course teaches about...."
+        />
+      </div>
+
+      <label htmlFor="imageUrl">Preview Url</label>
+      <input
+        {...register("imageUrl",
+          {
+            required: "Preview url is required",
+
+          }
+        )}
+        type="text"
+        id="imageUrl"
+        name="imageUrl"
+        placeholder="https://"
+
+      />
+
+      {/* <label htmlFor="duration">Duration</label>
+      <input
+        {...register("duration",
+          {
+            required: "Preview url is required",
+          }
+        )}
+        type="text"
+        id="duration"
+        name="duration"
+        placeholder=""
+      /> */}
+      <div>
+        <label>What studnts learn</label>
+        {fields.map((field, index) => {
+          return (
+            <div key={field.id}>
+              <input
+                className="chapter"
                 type="text"
-                id="imageUrl"
-                name="imageUrl"
-                value={data.imageUrl}
-                onChange={handleChange}
-            />
+                placeholder="Enter an objective"
+                {...register(`whatStudentsLearn.${index}.mainPoint`)} 
+                defaultValue={field?.mainPoint}
+                />
+              {
+               ( index > 0) && (<button className="chapter" type="button" onClick={() => { remove(index) }}>Remove</button>)
+              }
+            </div>
+          )
 
-            <label htmlFor="duration">Duration</label>
-            <input
-                type="text"
-                id="duration"
-                name="duration"
-                placeholder="Apt. 2"
-              
-                value={data.duration}
-                onChange={handleChange}
-            />
-        </div>
-    )
+        })}
+        <button type="button" onClick={() => append({ mainPoint: "" })}>Add Objectives</button>
+      </div>
+    </div>
+  )
 
-    return content
+  return content
 }
-export default BasicCourseInformation
+export default BasicCourseInformation;

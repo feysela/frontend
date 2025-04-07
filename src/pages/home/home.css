@@ -1,35 +1,36 @@
-.home-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 100%;
-    padding: 1rem 0rem;
-    
-  }
-  .carousel{
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  padding: rem 0rem;
+ 
+  margin: 0 auto;
+
+}
+
+/* .carousel{
    height: 0%;
     max-width: 100%;
-  }
-  .course-list{
-    
-  }
-  .card{
-    border: 1px solid hsl(0,0%,80%);
-    border-radius: 10px;
-    box-shadow:5px 5px 5px hsl(0,0%, 0%, 0.1);
-    padding:20px;
+  } */
+
+/* .card{ */
+/* border: 1px solid hsl(0,0%,80%); */
+/* border-radius: 10px; */
+/* box-shadow:10px 10px 10px hsl(0,0%, 0%, 0.1); */
+/* box-shadow: 1px; */
+/* padding:20px;
     margin:10px;
     max-width: 500px;
-    display: inline-block;
-
-  }
-  .card .card-image{
+    display: inline-block; */
+/* } */
+/* .card .card-image{
     max-width: 60%;
     height: auto;
     margin-bottom: 10px;
-  }
-  .card .card-title{
+  } */
+/* .card .card-title{
     font-family: Arial, Helvetica, sans-serif;
     margin:0;
     color: rgb(53, 49, 49);
@@ -45,4 +46,4 @@
     padding: 33% 0;
   
     text-align: center;
-  }
+  } */

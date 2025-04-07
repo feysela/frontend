@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 :root {
   --primary:rgb(135, 196, 135);
@@ -8,7 +9,7 @@
 }
 body {
  
-  margin: 1rem;
+  margin: 0;
   font-family: "Poppins";
   background: var(--secondary); 
 
@@ -48,15 +49,15 @@ header nav {
   margin-top: 0; 
   /* background-color: rgb(242, 242, 249); */
   background-color:white;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   padding: 1rem 0rem;
   color: black;
 }
-input{
+/* input{
   border-radius: 0.5rem;
   border: 1px solid black;
  
-}
+} */
 /* nav label, nav a {
   margin-right: auto;
   border-bottom: 3px solid var(--primary);
@@ -66,40 +67,35 @@ input{
 /* header nav label{
   font-size: 25px;
 } */
- .searchBar {
+ /* .searchBar {
   line-height: 2rem;
   min-width: 3rem;
   flex-grow: 2rem;
-  /* border-radius: 5px;
-  border: 5px solid white;
-  margin-right: 300px;
-  margin-left:4px;
-  height:25px; */
 
-} 
 
-header nav a{
+}  */
+
+/* header nav a{
   text-decoration: none;
   padding: 0.4rem;
   border-radius: 0.4rem;
 
-}
-header nav a.active {
-  /* background: var(--secondary); */
+} */
+/* header nav a.active {
+
   background: white;
   height: 0%;
-}
+} */
 
 
-/* page content */
-main {
+
+/* main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
-  /* max-width: 1200px;
-  margin: 40px auto; */
-}
+
+} */
 /* help layout */
 .help-layout nav {
   display: flex;
@@ -110,7 +106,7 @@ main {
 .help-layout nav a{
   padding: 10px;
   border: 2px solid white;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   text-decoration: none;
 }
 .help-layout nav a:hover{
@@ -202,7 +198,7 @@ form label span {
 /* breadcrumbs */
 .breadcrumbs {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 .breadcrumbs > *{
   display: inline-block;
@@ -236,6 +232,18 @@ li.page-item{
 li{
   display:inline;
   width: 3%;
+}
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
 }
 /* .pagination{
   list-style-type: none;

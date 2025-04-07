@@ -1,17 +1,21 @@
 import { Outlet } from "react-router-dom"
-import { setAuthHeader } from "../../serverRequest";
 import Modal from "../../components/modalComponent/Modal";
 import { useNavigate } from "react-router-dom";
 import { getRequestServer } from "../../serverRequest";
 import CourseList from "../../components/courseList/CourseList";
 import { useState, useContext, useRef } from "react";
 import { useEffect } from "react";
-import Pagination from "../../components/Paginaton";
+// import Pagination from "../../components/Paginaton";
 import { requestServer } from "../../serverRequest";
 import Footer from "../../components/footer/Footer";
 import './dashboard.css';
-import { UserContext } from "../../context/UserContext"
-
+import  UserContext  from "../../context/UserContextProvider";
+import { getUserId} from "../../serverRequest";
+import { getInstructor,setInstructor } from "../../serverRequest";
+import { Paper } from '@mui/material';
+import Pagination from "@mui/material/Pagination";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 export default function InstuctorDashBoard() {
   const {  userData } = useContext(UserContext);
 
@@ -24,21 +28,24 @@ export default function InstuctorDashBoard() {
   const navigate = useNavigate();
   const selectCourse = (id) => setFocusedCourseId(id);
   const persistRef =useRef("dfdfdf");
+
  
   useEffect(() => {
     setLoading(true);
-    getRequestServer("/private/getAllCourses")
-      .then(data => { SetCourseList(data.content) });
+    getRequestServer(`/private/getCoursesByInstructor/${getInstructor()}`)
+      .then(data => { 
+        console.log(data);
+        SetCourseList(data) });
     setLoading(false);
-    console.log(`user data: ${userData.firstName}`)
-    persistRef.current=userData.firstName;
+    console.log(`user data: ${userData?.firstName}`)
+    persistRef.current=userData?.firstName;
    
   }, []);
 
-
+const loginInfo=getUserId();
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courseList.slice(indexOfFirstCourse, indexOfLastCourse);
+  const currentCourses = courseList?.slice(indexOfFirstCourse, indexOfLastCourse);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const editCourseById = (id, newCourseName, newDescription, newImageUrl) => {
@@ -53,22 +60,20 @@ export default function InstuctorDashBoard() {
   };
 
   const deleteCourseById = () => {
-    requestServer("DELETE", `/private/deleteCourse/${focusedCourseId}`, {}).then(response => {
+    requestServer("DELETE", `/private/deleteCourseByCourseId/${focusedCourseId}`, {}).then(response => {
       console.log("What is received");
       console.log(response);
-      navigate("/instructordashboard");
     }).catch((error) => {
       console.log(error);
     });
-
-    const updatedCourses = courseList.filter((course) => { return course.id !== focusedCourseId; });
-    SetCourseList(updatedCourses);
+    SetCourseList(courseList.filter((course) => course.courseId !==focusedCourseId ));
   };
   const modalHeader = "Confirm Deletion";
   const modalText = "Are you sure you want to delete this course?";
   
  
-
+console.log("Saved Information");
+console.log(loginInfo);
   return (
     <div className="dashboard" >
       {openModal &&
@@ -77,25 +82,18 @@ export default function InstuctorDashBoard() {
           modalText={modalText}
           action={deleteCourseById}
         />}
-     
-      <>The ref {persistRef.current}</>
-     
-      <button onClick={() => {
-        setAuthHeader(null);
-        navigate("/");
-      }}>Logout</button>
-
-      <h2>Instructor Dashboard</h2>
-      <p>Courses available in the database</p>
-      <div>
-        <button onClick={() => {
+      <Typography>Instructor Dashboard</Typography>
+      <Typography>Courses by {getInstructor()}</Typography>
+      <div className="new-course">
+        <Button onClick={() => {
           navigate("/createCourse");
-        }}>Create a new course</button>
+        }} type="outlined">+ Create a new course</Button>
       </div>
-      <div className='container mt-5'>
+
+      <div className='list-container'>
         {loading ? <h2>Loading . . .</h2> : undefined}
         {courseList && <CourseList
-          Courses={currentCourses}
+          Courses={courseList}
           onEdit={editCourseById}
           onDelete={deleteCourseById}
           loading={loading}
@@ -103,12 +101,14 @@ export default function InstuctorDashBoard() {
           selectCourse={selectCourse} />}
         
       </div>
-      <Pagination
+      {/* <Pagination
+          className="pagination"
           coursesPerPage={coursesPerPage}
-          totalCourses={courseList.length}
+          totalCourses={courseList?.length}
           paginate={paginate}
           currentPage={currentPage}
-        />
+        /> */}
+        
         <Outlet />
       <Footer />
     </div>

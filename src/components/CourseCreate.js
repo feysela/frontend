@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { requestServer } from "../serverRequest";
 
-
 function CourseCreate() {
 
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ function CourseCreate() {
       navigate("/instructordashboard");
     }).catch((error) => {
       console.log(error);
-     // navigate("/createCourse");
     });
   }
 

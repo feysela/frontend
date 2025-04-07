@@ -17,12 +17,12 @@
   left: -10000px;
 } */
 
-.split-container {
+/* .split-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
   gap: 1rem;
-}
+} */
 
 .flex-col {
   display: flex;
@@ -52,7 +52,7 @@ textarea,
 select {
   font: inherit;
 }
-nput:focus {
+input:focus {
   color: #ff0000;
 }
 
@@ -133,13 +133,20 @@ select {
   width: 100%;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   width: 16px;
   height: 16px;
   margin-right: 0.5rem;
+} */
+.topic, .chapter{
+  display: inline;
+  margin-right: 5px;
 }
 
 ul {
   list-style-type: none;
   margin-bottom: 1rem;
+}
+.chapters{
+  width: 50%;
 }
