@@ -32,10 +32,9 @@ import { UserContextProvider } from "./context/UserContextProvider";
 import CoursePlayer from './pages/courseTake/CourePlayer';
 
 import AddChapter from './components/createCourse/AddChapter';
-import { createTheme, ThemeProvider } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { green } from "@mui/material/colors";
-import UseUserContext from './hooks/useUserContext';
-import { getUserId, setUserId, getRoles } from './serverRequest';
+
 import Preview from './components/createCourse/Preview';
 import ChapterAddition from './components/createCourse/ChapterAdditon';
 import TopicAddition from './components/createCourse/TopicAddtion';
@@ -43,13 +42,12 @@ import TopicAddition from './components/createCourse/TopicAddtion';
 
 
 const ProtectedRoute = ({ allowedRoles }) => {
-  // const { userData } = UseUserContext();
+
   const userData = window.localStorage.getItem('quraan_app_user_data');
   const location = useLocation();
   console.log("userData from protected route");
   console.log(userData.current);
-  const userId = getUserId();
-  const roles = getRoles();
+
 
   return (
     JSON.parse(userData)?.roles?.map(role => role.name).find(roleName => allowedRoles?.includes(roleName))

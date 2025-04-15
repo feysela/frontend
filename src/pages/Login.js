@@ -7,12 +7,11 @@ import { requestServer } from "../serverRequest";
 import {  useContext } from "react";
 import UserContext from "../context/UserContextProvider";
 import { useRef,useState } from "react";
-import { setUserId,setRoles,getRoles, getInstructor, setInstructor, getQuraan_app_user_data, setQuraan_app_user_data } from "../serverRequest";
-import { Grid } from "@mui/material";
+import { setUserId,setRoles, setInstructor, getQuraan_app_user_data, setQuraan_app_user_data } from "../serverRequest";
 import {Paper} from "@mui/material";
 import {Typography} from "@mui/material";
 import { Stack, TextField, Button } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 import "./loginAndRegister.css";
 const MyGridItem =styled('Grid')(({ theme }) => ({
   [theme.breakpoints.down('xs')]: {
@@ -30,17 +29,17 @@ export default function Login() {
   const {userData,updateUser} =useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleClickShowPassword = () => setShowPassword((show) => !show);
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
   const navigate = useNavigate();
   const location=useLocation();
-  const from =location.state?.from?.pathname || "/";
+  // const from =location.state?.from?.pathname || "/";
 
-  const errRef=useRef();
+  // const errRef=useRef();
 
-  const [errMsg, setErrMsg] = useState('');
+  // const [errMsg, setErrMsg] = useState('');
   const { register,
     handleSubmit,
     formState: { errors, isSubmitting }

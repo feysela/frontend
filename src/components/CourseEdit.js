@@ -2,17 +2,11 @@
 import { useForm } from 'react-hook-form';
 import { requestServer } from '../serverRequest';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getRequestServer } from '../serverRequest';
 function CourseEdit() {
 
   const { id } = useParams();
-  let [course, setCourse] = useState({
-    id: 0,
-    courseName: "",
-    description: "",
-    imageUrl: ""
-  });
 
   const navigate = useNavigate();
 
@@ -33,16 +27,7 @@ function CourseEdit() {
 
   });
 
-  const handleChange = (event) => {
-    let value = event.target.value;
-    let name = event.target.name;
-    setCourse((prevalue) => {
-      return {
-        ...prevalue,
-        [name]: value
-      }
-    })
-  }
+
   const onSubmit = async (data) => {
     if (isDirty === false) {
       return
@@ -63,7 +48,6 @@ function CourseEdit() {
     }).catch((error) => {
       console.log(error);
 
-      //navigate("/instructordashboard");
     });
   }
 

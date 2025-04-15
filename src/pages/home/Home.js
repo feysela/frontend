@@ -49,7 +49,7 @@ export default function Home() {
 
   useEffect(() => {
     getRequestServer("/public/getAllCourses")
-      .then(data => { SetCourseList(data.content) });
+      .then(data => { SetCourseList(data?.content) });
      //addDoc(ref,message);
     //  handleDelete();
      getCourses();

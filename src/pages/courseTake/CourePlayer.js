@@ -1,7 +1,5 @@
 
 import React, { useState } from 'react';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import Certificate from './Certificate';
 import { useParams } from "react-router-dom";
 
 import { useEffect } from "react";
@@ -17,14 +15,12 @@ import AccordionActions from '@mui/material/AccordionActions';
 import Button from "@mui/material/Button";
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { styled } from '@mui/styles';
+import { styled } from '@mui/system';
 import Box from '@mui/material/Box';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import { useReducer } from "react";
 import { useNavigate } from 'react-router-dom';
-import CircularProgress, {
-  CircularProgressProps,
-} from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function CircularProgressWithLabel(props) {

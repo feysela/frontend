@@ -4,15 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { setAuthHeader } from '../serverRequest'
 import { useForm } from "react-hook-form"
 import { requestServer } from '../serverRequest'
-import { AuthData } from '../App';
-import { Grid } from "@mui/material";
+
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack, TextField, Button } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { InputLabel, Input, FormHelperText } from '@mui/material';
+import Select from '@mui/material/Select';
+import { InputLabel } from '@mui/material';
 import "./loginAndRegister.css";
 export default function Register() {
   //Take param error=? if error is available show error

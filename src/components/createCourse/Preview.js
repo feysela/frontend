@@ -24,7 +24,7 @@ import PersonalVideoOutlinedIcon from '@mui/icons-material/PersonalVideoOutlined
 import CheckIcon from '@mui/icons-material/Check';
 import ReactPlayer from "react-player";
 import { useParams} from "react-router-dom";
-//import { makeStyles } from '@mui/styles';
+
 import Rating from '@mui/material/Rating';
 import { useState } from "react";
 import { useEffect } from "react";
